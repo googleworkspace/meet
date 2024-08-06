@@ -1,0 +1,47 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /projects/{project} {
+      function isSignedIn() {
+        return request.auth != null;
+      }
+      
+      function getRole(rsc) {
+        return rsc.data.roles[request.auth.uid];
+      }
+   
+      function isValidNewProject() {
+        return request.resource.data.roles[request.auth.uid] == 'owner';
+      }
+     
+      function isOwner(rsc) {      
+        return isSignedIn() && getRole(rsc) in ['owner', 'writer'];
+      }
+
+			function isWriter(rsc) {
+        return isSignedIn() && getRole(rsc) in ['owner', 'writer'];
+      }
+
+			function isCollaborator(rsc) {
+        return isSignedIn() && getRole(rsc) in ['owner', 'reader', 'writer'];
+      }
+      
+      allow create: if isValidNewProject();
+      allow read: if isCollaborator(resource);
+      allow write: if isWriter(resource);
+      allow delete: if isOwner(resource)
+
+	  match /tasks/{task} {
+      	allow create: if isWriter(get(/databases/$(database)/documents/projects/$(project)))
+      	allow read: if isCollaborator(get(/databases/$(database)/documents/projects/$(project)))
+      	allow write: if isWriter(get(/databases/$(database)/documents/projects/$(project)))
+      	allow delete: if isWriter(get(/databases/$(database)/documents/projects/$(project)))
+      }
+    }
+    
+    match /tokens/{user} {
+      allow read, write: if true;
+    }
+  }
+}

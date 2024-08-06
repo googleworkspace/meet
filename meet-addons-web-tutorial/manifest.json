@@ -1,0 +1,13 @@
+{
+  "addOns": {
+    "common": {
+      "name": "My First Meet Web Add-on",
+      "logoUrl": "https://fonts.gstatic.com/s/i/googlematerialicons/markunread_mailbox/v6/black-24dp/1x/gm_markunread_mailbox_black_24dp.png"
+    },
+    "meet": {
+      "web": {
+        "sidePanelUri": "http://localhost:3000/meet/sidepanel"
+      }
+    }
+  }
+}
