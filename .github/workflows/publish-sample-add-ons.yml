@@ -31,7 +31,6 @@ jobs:
       matrix:
         node-version: [22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    # TODO: run this in a loop when there are multiple samples.
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
@@ -40,13 +39,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: addons-web-sdk/hello-world/package-lock.json
+    # TODO: run this in a loop when there are multiple samples.
     - run: npm run build
       working-directory: addons-web-sdk/hello-world
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
         name: page
-        path: addons-web-sdk/hello-world/dist
+        path: addons-web-sdk/dist
         if-no-files-found: error
   deploy:
     runs-on: ubuntu-latest
@@ -63,12 +63,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: page
-          path: hello-world
-      # TODO: run this in a loop when there are multiple samples.
+          path: .
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: hello-world
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

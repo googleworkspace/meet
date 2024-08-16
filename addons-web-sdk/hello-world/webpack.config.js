@@ -19,6 +19,6 @@ module.exports = {
   output: {
     filename: 'main.js',
     library: "helloWorld",
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist/hello-world'),
   },
 };
