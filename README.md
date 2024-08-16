@@ -1,6 +1,8 @@
 # Google Meet Libraries
 
-This repository contains various client libraries for integrating with Google Meet.
+This repository contains client libraries for integrating with Google Meet.
+
+## Meet Add-ons
 
 ## Documentation
 
