@@ -31,15 +31,15 @@ jobs:
       matrix:
         node-version: [18.x, 20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    # TODO: run this in a loop when there are multiple samples.
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
-      working-directory: addons-web-sdk/hello-world
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    # TODO: run this in a loop when there are multiple samples.
+        cache-dependency-path: addons-web-sdk/hello-world/package-lock.json
     - run: npm run build
       working-directory: addons-web-sdk/hello-world
   deploy:
