@@ -29,7 +29,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     # TODO: run this in a loop when there are multiple samples.
     steps:
@@ -43,11 +43,11 @@ jobs:
     - run: npm run build
       working-directory: addons-web-sdk/hello-world
   deploy:
+    runs-on: ubuntu-latest
     needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './addons-web-sdk/hello-world/dist/'
+          path: '~/addons-web-sdk/hello-world/dist/'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
