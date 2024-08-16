@@ -1,0 +1,4 @@
+# Build outputs for sample Meet Add-ons
+addons-web-sdk/samples/dist/
+addons-web-sdk/samples/*/node_modules/
+addons-web-sdk/samples/*/.DS_STORE
