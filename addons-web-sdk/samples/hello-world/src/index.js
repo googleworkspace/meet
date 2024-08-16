@@ -16,7 +16,7 @@ import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
 // TODO: Make sure that you modify these constants, if you fork this!
 const CLOUD_PROJECT_NUMBER = "12345678910";
-const MAIN_STAGE_URL = "https://googleworkspace.github.io/meet/samples/hello-world/MainStage.html"
+const MAIN_STAGE_URL = "https://googleworkspace.github.io/meet/hello-world/MainStage.html"
 
 /**
  * Prepares the Add-on Side Panel Client, and adds an event to launch the main
