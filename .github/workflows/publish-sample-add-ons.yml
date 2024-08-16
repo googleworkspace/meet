@@ -43,6 +43,7 @@ jobs:
     - run: npm run build
       working-directory: addons-web-sdk/hello-world
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
