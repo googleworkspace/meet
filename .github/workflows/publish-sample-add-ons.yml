@@ -63,12 +63,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: page
-          path: .
+          path: hello-world
       # TODO: run this in a loop when there are multiple samples.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: hello-world
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
