@@ -1,4 +1,4 @@
 # Build outputs for sample Meet Add-ons
-addons-web-sdk/*/dist/*
+addons-web-sdk/*/dist/
 addons-web-sdk/*/node_modules/
 addons-web-sdk/*/.DS_STORE

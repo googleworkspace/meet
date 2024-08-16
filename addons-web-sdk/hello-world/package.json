@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "cp src/*.html dist/ && npx webpack"
+    "build": "mkdir -p dist && cp src/*.html dist/ && npx webpack"
   },
   "dependencies": {
     "@googleworkspace/meet-addons": "^0.9.1"
