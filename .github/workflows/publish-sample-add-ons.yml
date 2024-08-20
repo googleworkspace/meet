@@ -36,7 +36,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: addons-web-sdk/samples/hello-world/package-lock.json
-    # TODO: run this in a loop when there are multiple samples.
+    # TODO: Currently hardcoded to addons-web-sdk. Need different approach when
+    # there are multiple samples.
     - run: npm run build
       working-directory: addons-web-sdk/samples/hello-world
     - name: Upload build
