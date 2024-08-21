@@ -1,0 +1,4 @@
+# Build outputs for sample Meet Add-ons
+**/dist
+**/node_modules
+**/.DS_Store
