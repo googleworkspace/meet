@@ -22,7 +22,7 @@ const MAIN_STAGE_URL = "https://googleworkspace.github.io/meet/hello-world/MainS
  * Prepares the Add-on Side Panel Client, and adds an event to launch the main
  * stage when the main button is clicked.
  */
-async function setUpAddon() {
+export async function setUpAddon() {
   const session = await meet.addon.createAddonSession({
     cloudProjectNumber: CLOUD_PROJECT_NUMBER,
   });
@@ -31,7 +31,3 @@ async function setUpAddon() {
     await sidePanelClient.startCollaboration({ mainStageUrl: MAIN_STAGE_URL });
   });
 }
-
-export {
-  setUpAddon,
-};
