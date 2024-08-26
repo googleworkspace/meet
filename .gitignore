@@ -1,4 +1,5 @@
 # Build outputs for sample Meet Add-ons
+addons-web-sdk/samples/package-lock.json
 **/dist
 **/node_modules
 **/.DS_Store
