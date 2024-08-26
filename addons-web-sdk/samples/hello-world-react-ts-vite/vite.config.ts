@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -6,7 +7,13 @@ export default defineConfig({
   plugins: [react()],
   root: "src",
   build: {
-    outDir: '../dist',
+    outDir: '../../dist/hello-world-react-ts-vite',
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'src/SidePanel.html'),
+        mainStage: resolve(__dirname, 'src/MainStage.html'),
+      }
+    }
   },
 })

@@ -35,11 +35,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: addons-web-sdk/samples/hello-world/package-lock.json
-    # TODO: Currently hardcoded to addons-web-sdk. Need different approach when
-    # there are multiple samples.
+        cache-dependency-path: addons-web-sdk/samples/package-lock.json
     - run: npm run build
-      working-directory: addons-web-sdk/samples/hello-world
+      working-directory: addons-web-sdk/samples
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
