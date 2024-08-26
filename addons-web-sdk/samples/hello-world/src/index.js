@@ -26,7 +26,7 @@ export async function setUpAddon() {
   const session = await meet.addon.createAddonSession({
     cloudProjectNumber: CLOUD_PROJECT_NUMBER,
   });
-  sidePanelClient = await session.createSidePanelClient();
+  const sidePanelClient = await session.createSidePanelClient();
   document.getElementById('start-activity').addEventListener('click', async () => {
     await sidePanelClient.startCollaboration({ mainStageUrl: MAIN_STAGE_URL });
   });
