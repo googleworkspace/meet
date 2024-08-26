@@ -35,7 +35,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: addons-web-sdk/samples/package-lock.json
     - run: npm run build
       working-directory: addons-web-sdk/samples
     - name: Upload build
