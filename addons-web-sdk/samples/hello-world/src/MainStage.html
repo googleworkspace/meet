@@ -10,6 +10,14 @@
 <body style="width: 100%; height: 100%; margin: 0">
   <div>This is the Add-on Main Stage. Everyone in the call can see this.</div>
   <div>Hello, world!</div>
+
+  <script>
+    document.body.onload = () => {
+      // Library name (`helloWorld`) is defined in the webpack config.
+      // The function (`initializeMainStage`) is defined in index.js.
+      helloWorld.initializeMainStage();
+    };
+  </script>
 </body>
 
 </html>

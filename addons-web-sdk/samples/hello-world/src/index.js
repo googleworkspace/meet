@@ -31,3 +31,14 @@ export async function setUpAddon() {
     await sidePanelClient.startCollaboration({ mainStageUrl: MAIN_STAGE_URL });
   });
 }
+
+/**
+ * Prepares the Add-on Main Stage Client, which signals that the add-on has
+ * successfully launched in the main stage.
+ */
+export async function initializeMainStage() {
+  const session = await meet.addon.createAddonSession({
+    cloudProjectNumber: CLOUD_PROJECT_NUMBER,
+  });
+  await session.createMainStageClient();
+}
