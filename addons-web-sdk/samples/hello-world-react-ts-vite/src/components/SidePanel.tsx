@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 import { CLOUD_PROJECT_NUMBER, MAIN_STAGE_URL } from '../constants';
 
-function Setup() {
+/**
+ * See: https://developers.google.com/meet/add-ons/guides/overview#side-panel
+ */
+function SidePanel() {
   const [sidePanelClient, setSidePanelClient] = useState(null);
 
+  // Launches the main stage when the main button is clicked.
   async function startCollaboration(e) {
     if (!sidePanelClient) {
       throw new Error("Side Panel is not yet initialized!");
@@ -13,6 +17,9 @@ function Setup() {
   }
 
   useEffect(() => {
+    /**
+     * Prepares the Add-on Side Panel Client.
+     */
     async function setUpAddon() {
       const session = await meet.addon.createAddonSession({
         cloudProjectNumber: CLOUD_PROJECT_NUMBER,
@@ -30,4 +37,4 @@ function Setup() {
   )
 }
 
-export default Setup;
+export default SidePanel;

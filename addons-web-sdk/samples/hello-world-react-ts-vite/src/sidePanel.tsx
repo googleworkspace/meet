@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Setup from './components/Setup.tsx'
+import SidePanel from './components/SidePanel.tsx'
 
+// Renders the SidePanel as a React component.
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Setup />
+    <SidePanel />
   </StrictMode>,
 )
