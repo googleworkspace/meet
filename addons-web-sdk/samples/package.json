@@ -10,6 +10,6 @@
   },
   "workspaces": [
     "hello-world",
-    "hello-world-react-ts-vite"
+    "hello-world-next-js"
   ]
 }
