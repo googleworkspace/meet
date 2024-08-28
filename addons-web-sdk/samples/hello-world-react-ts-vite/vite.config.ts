@@ -15,19 +15,35 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import commonjs from '@rollup/plugin-commonjs';
+
+import { fileURLToPath } from 'node:url';
+const externalId = fileURLToPath(
+	new URL(
+		'node_modules/@googleworkspace/meet-addons/meet.addons.js',
+		import.meta.url
+	)
+);
+console.log(externalId);
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "meet/hello-world-react-ts-vite",
+  base: "/meet/hello-world-react-ts-vite",
   root: "src",
   build: {
+    minify: false,
     outDir: '../../dist/hello-world-react-ts-vite',
     emptyOutDir: true,
+    commonjsOptions: {
+      // include: /node_modules/
+      // exclude: ["node_modules/@googleworkspace/**"]
+    },
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/SidePanel.html'),
         mainStage: resolve(__dirname, 'src/MainStage.html'),
+        addons: resolve(__dirname, 'node_modules/@googleworkspace/meet-addons/meet.addons.js'),
       }
     }
   },
