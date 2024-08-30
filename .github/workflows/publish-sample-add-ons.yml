@@ -3,7 +3,7 @@ name: Deploy sample Add-ons to GitHub Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main", "teddy_sample-next-js"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,6 +34,8 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: addons-web-sdk/samples/package-lock.json
     - run: npm run build
       working-directory: addons-web-sdk/samples
     - name: Upload build

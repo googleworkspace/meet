@@ -6,7 +6,7 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "./build.sh"
+    "build": "npm install && npm run build --workspaces"
   },
   "workspaces": [
     "hello-world",
