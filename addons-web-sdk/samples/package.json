@@ -1,0 +1,15 @@
+{
+  "name": "meet-add-on-samples",
+  "description": "This builds all sample add-ons for deployment by managing them as workspaces.",
+  "keywords": [
+    "Google Meet"
+  ],
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "npm install && npm run build --workspaces"
+  },
+  "workspaces": [
+    "hello-world",
+    "hello-world-next-js"
+  ]
+}

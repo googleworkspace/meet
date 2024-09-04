@@ -15,7 +15,7 @@
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
 // TODO: Make sure that you modify these constants, if you fork this!
-const CLOUD_PROJECT_NUMBER = "12345678910";
+const CLOUD_PROJECT_NUMBER = "989911054302";
 const MAIN_STAGE_URL = "https://googleworkspace.github.io/meet/hello-world/MainStage.html"
 
 /**
@@ -26,8 +26,19 @@ export async function setUpAddon() {
   const session = await meet.addon.createAddonSession({
     cloudProjectNumber: CLOUD_PROJECT_NUMBER,
   });
-  sidePanelClient = await session.createSidePanelClient();
+  const sidePanelClient = await session.createSidePanelClient();
   document.getElementById('start-activity').addEventListener('click', async () => {
     await sidePanelClient.startCollaboration({ mainStageUrl: MAIN_STAGE_URL });
   });
+}
+
+/**
+ * Prepares the Add-on Main Stage Client, which signals that the add-on has
+ * successfully launched in the main stage.
+ */
+export async function initializeMainStage() {
+  const session = await meet.addon.createAddonSession({
+    cloudProjectNumber: CLOUD_PROJECT_NUMBER,
+  });
+  await session.createMainStageClient();
 }

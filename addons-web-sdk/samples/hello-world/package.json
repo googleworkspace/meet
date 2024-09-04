@@ -1,6 +1,12 @@
 {
+  "name": "hello-world",
+  "description": "This is approximately the simplest possible Meet add-on.",
+  "keywords": [
+    "Google Meet"
+  ],
+  "license": "Apache-2.0",
   "scripts": {
-    "build": "npm install && mkdir -p ../dist/hello-world && cp src/*.html ../dist/hello-world/ && npx webpack"
+    "build": "mkdir -p ../dist/hello-world && cp src/*.html ../dist/hello-world/ && npx webpack"
   },
   "dependencies": {
     "@googleworkspace/meet-addons": "^0.9.1"
