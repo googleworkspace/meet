@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // TODO: Make sure that you modify these constants, if you fork this!
-export const CLOUD_PROJECT_NUMBER: string = "989911054302";
+export const CLOUD_PROJECT_NUMBER: string = "509165100245";
 export const SITE_BASE: string = "https://googleworkspace.github.io/meet/animation-next-js/";
 export const MAIN_STAGE_URL: string = SITE_BASE + "mainstage.html";
 export const SIDE_PANEL_URL: string = SITE_BASE + "sidepanel.html";
