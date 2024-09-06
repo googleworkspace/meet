@@ -1,15 +1,18 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
-import { meet, MeetSidePanelClient } from '@googleworkspace/meet-addons/meet.addons';
+import {
+  meet,
+  MeetSidePanelClient,
+} from '@googleworkspace/meet-addons/meet.addons';
 import {
   ACTIVITY_SIDE_PANEL_URL,
   CLOUD_PROJECT_NUMBER,
-  MAIN_STAGE_URL
+  MAIN_STAGE_URL,
 } from '../../shared/constants';
 
 /**
- * See: https://developers.google.com/meet/add-ons/guides/overview#side-panel
+ * @see {@link https://developers.google.com/meet/add-ons/guides/overview#side-panel}
  */
 export default function Page() {
   const [sidePanelClient, setSidePanelClient] = useState<MeetSidePanelClient>();
@@ -20,7 +23,7 @@ export default function Page() {
    */
   async function startCollaboration(e: unknown) {
     if (!sidePanelClient) {
-      throw new Error("Side Panel is not yet initialized!");
+      throw new Error('Side Panel is not yet initialized!');
     }
 
     const startingColor = (
@@ -56,12 +59,17 @@ export default function Page() {
         Welcome to Pretty Colors! This is a contrived demo add-on that lets you
         look at an animation involving your favorite color.
       </div>
-      <label htmlFor="starting-color">Pick a color you like. Everyone will see this:</label>
-      <input type="color" id="starting-color" name="starting-color" defaultValue="#00ff00" />
+      <label htmlFor="starting-color">
+        Pick a color you like. Everyone will see this:
+      </label>
+      <input
+        type="color"
+        id="starting-color"
+        name="starting-color"
+        defaultValue="#00ff00"
+      />
       <br />
-      <button onClick={startCollaboration}>
-        Start the animation!
-      </button>
+      <button onClick={startCollaboration}>Start the animation!</button>
     </>
-  )
+  );
 }

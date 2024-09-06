@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import {
@@ -21,7 +21,7 @@ export default function Page() {
    */
   async function updateColor(newColor: string) {
     if (!sidePanelClient) {
-      throw new Error("Side Panel is not yet initialized!");
+      throw new Error('Side Panel is not yet initialized!');
     }
 
     await sidePanelClient.notifyMainStage(newColor);
@@ -44,13 +44,16 @@ export default function Page() {
 
   return (
     <>
-      <label htmlFor="pretty-color">Change the color. Only you will see this:</label>
+      <label htmlFor="pretty-color">
+        Change the color. Only you will see this:
+      </label>
       <input
         type="color"
         id="pretty-color"
         name="pretty-color"
         defaultValue="#00ff00"
-        onChange={(e) => updateColor(e.target.value)} />
+        onChange={(e) => updateColor(e.target.value)}
+      />
     </>
-  )
+  );
 }

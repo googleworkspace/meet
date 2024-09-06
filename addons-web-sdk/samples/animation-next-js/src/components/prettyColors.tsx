@@ -8,8 +8,8 @@ import './prettyColors.css';
 
 type Props = {
   // Hex color picked within color input component.
-  baseColor: string,
-}
+  baseColor: string;
+};
 
 // Copied from https://github.com/google/closure-library/blob/master/closure/goog/color/color.js#L562
 // To avoid installing full closure dep.
@@ -33,11 +33,11 @@ function hexToHsl(hexColor: string) {
   // If max and min are equal, the color is gray and h and s should be 0.
   if (max != min) {
     if (max == normR) {
-      h = 60 * (normG - normB) / (max - min);
+      h = (60 * (normG - normB)) / (max - min);
     } else if (max == normG) {
-      h = 60 * (normB - normR) / (max - min) + 120;
+      h = (60 * (normB - normR)) / (max - min) + 120;
     } else if (max == normB) {
-      h = 60 * (normR - normG) / (max - min) + 240;
+      h = (60 * (normR - normG)) / (max - min) + 240;
     }
 
     if (0 < l && l <= 0.5) {
@@ -56,12 +56,12 @@ function hexToHsl(hexColor: string) {
  */
 function reverseAnimation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
   const div = e.target as HTMLDivElement;
-  div.style.animationDirection = "reverse";
-  div.style.animationDuration = "1000ms";
+  div.style.animationDirection = 'reverse';
+  div.style.animationDuration = '1000ms';
 
   setTimeout(() => {
-    div.style.animationDirection = "normal";
-    div.style.animationDuration = "10000ms";
+    div.style.animationDirection = 'normal';
+    div.style.animationDuration = '10000ms';
   }, 1000);
 }
 
@@ -74,7 +74,7 @@ function createLines(hslColor: number[], steps: number) {
   const minSaturation = hslColor[1] / 2;
   const maxSaturation = Math.max(1, hslColor[1] * 1.5);
   const minLuminosity = hslColor[2] / 2;
-  const maxLuminosity = Math.max(.95, hslColor[2] * 1.5);
+  const maxLuminosity = Math.max(0.9, hslColor[2] * 1.5);
   let key = 0;
 
   for (let i = 0; i < steps; i++) {
@@ -88,7 +88,9 @@ function createLines(hslColor: number[], steps: number) {
         luminosity <= maxLuminosity;
         luminosity += (maxLuminosity - minLuminosity) / steps
       ) {
-        coloredLines.push(createLine(hslColor[0], saturation, luminosity, key++));
+        coloredLines.push(
+          createLine(hslColor[0], saturation, luminosity, key++)
+        );
       }
     }
   }
@@ -106,20 +108,22 @@ function createLine(
   lineNumber: number
 ): ReactElement {
   const randomColor = `hsl(${hue}, ${saturation * 100}%, ${luminosity * 100}%)`;
-  const top = Math.random() * 100;
-  const left = (Math.random() * 110) - 20;
+  const top = lineNumber % 100;
+  const left = (lineNumber % 110) - 20;
   const randomStyle = {
     backgroundColor: randomColor,
     color: randomColor,
     top: `${top}%`,
     left: `${left}%`,
-  }
-  return <div
-    key={lineNumber}
-    className="prettyLine"
-    style={randomStyle}
-    onMouseOver={(e) => reverseAnimation(e)}>
-  </div>;
+  };
+  return (
+    <div
+      key={lineNumber}
+      className="prettyLine"
+      style={randomStyle}
+      onMouseOver={(e) => reverseAnimation(e)}
+    ></div>
+  );
 }
 
 /**
@@ -133,9 +137,7 @@ export default function PrettyColors({ baseColor }: Props) {
 
   return (
     <>
-      <div className="prettyColorsContainer">
-        {coloredLines}
-      </div>
+      <div className="prettyColorsContainer">{coloredLines}</div>
     </>
-  )
+  );
 }

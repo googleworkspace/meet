@@ -1,34 +1,37 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    width: 100%;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
 }
 
 .prettyColorsContainer {
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 .prettyLine {
-    animation-name: spin;
-    animation-direction: normal;
-    animation-duration: 10000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    /* border-width: 8px 0 8px 0;
-    border-style: solid; */
-    height: 10px;
-    position: absolute;
-    width: 40%;
+  animation-name: spin;
+  animation-direction: normal;
+  animation-duration: 10000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  height: 10px;
+  position: absolute;
+  width: 40%;
 }
 
 .prettyLine:hover {
-    animation-direction: reverse;
+  animation-direction: reverse;
 }
 
 @keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

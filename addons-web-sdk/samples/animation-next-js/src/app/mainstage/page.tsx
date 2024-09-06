@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import {
   meet,
   FrameToFrameMessage,
-  MeetMainStageClient
+  MeetMainStageClient,
 } from '@googleworkspace/meet-addons/meet.addons';
 import { CLOUD_PROJECT_NUMBER } from '../../shared/constants';
 import PrettyColors from '@/components/prettyColors';
 
 /**
- * See: https://developers.google.com/meet/add-ons/guides/overview#main-stage
+ * @see {@link https://developers.google.com/meet/add-ons/guides/overview#main-stage}
  */
 export default function Page() {
-  const [color, setColor] = useState<string>("#00ff00");
+  const [color, setColor] = useState('#00ff00');
 
   /**
    * Creates a MeetMainStageClient to control the main stage of the add-on.
@@ -41,9 +41,12 @@ export default function Page() {
    * the color used for the main animation.
    */
   function awaitNewColor(mainStageClient: MeetMainStageClient) {
-    mainStageClient.on('frameToFrameMessage', (message: FrameToFrameMessage) => {
-      setColor(message.payload);
-    });
+    mainStageClient.on(
+      'frameToFrameMessage',
+      (message: FrameToFrameMessage) => {
+        setColor(message.payload);
+      }
+    );
   }
 
   useEffect(() => {
@@ -64,5 +67,5 @@ export default function Page() {
     <>
       <PrettyColors baseColor={color}></PrettyColors>
     </>
-  )
+  );
 }

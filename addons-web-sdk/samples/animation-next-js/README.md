@@ -1,5 +1,5 @@
-# Pretty Colors: Next JS Add-on
+# Pretty Colors: Next.js Add-on
 
-This is a Meet Add-on built in Next JS. This add-on displays an animation that is intended to create a simple "shimmer" effect based on the color that each call participant selects. This add-on only exists to show more features of Google Meet Add-ons than can be found at <https://github.com/googleworkspace/meet/tree/main/addons-web-sdk/samples/hello-world-next-js>. If you find anything about the configuration confusing, please see that more basic example.
+This is a [Meet Add-on](https://developers.google.com/meet/add-ons/guides/overview) built in [Next.js](https://nextjs.org/). This add-on displays an animation that is intended to create a simple "shimmer" effect based on the color that each call participant selects. This add-on only exists to show more features of Google Meet Add-ons than can be found at [googleworkspace/meet/addons-web-sdk/samples/hello-world-next-js](https://github.com/googleworkspace/meet/tree/main/addons-web-sdk/samples/hello-world-next-js). If you find anything about the configuration confusing, please see that more basic example.
 
-You can view a deployed version of this Add-on at <https://googleworkspace.github.io/meet/animation-next-js/sidepanel> and its corresponding [mainstage.html](https://googleworkspace.github.io/meet/animation-next-js/mainstage).
+This add-on is deployed with GitHub pages, so that you can view the live versions of its [Side Panel](https://googleworkspace.github.io/meet/animation-next-js/sidepanel), [Main Stage](https://googleworkspace.github.io/meet/animation-next-js/mainstage), and all other routes. The screensharing promotion at the [index.html](https://googleworkspace.github.io/meet/animation-next-js/) will not fully work
