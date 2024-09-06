@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@googleworkspace/meet-addons": "^0.10.0-671117181",
+    "@googleworkspace/meet-addons": "^0.12.0",
     "next": "14.2.7",
     "react": "^18",
     "react-dom": "^18"
