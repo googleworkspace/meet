@@ -1,8 +1,8 @@
 import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Hello World!',
-  description: 'Google Meet Add-on build in Next.js',
+  title: 'Pretty Colors',
+  description: 'Google Meet Add-on that shows an animation',
 };
 
 export default function RootLayout({

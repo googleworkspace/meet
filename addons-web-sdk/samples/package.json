@@ -9,6 +9,7 @@
     "build": "npm install && npm run build --workspaces"
   },
   "workspaces": [
+    "animation-next-js",
     "hello-world",
     "hello-world-next-js"
   ]
