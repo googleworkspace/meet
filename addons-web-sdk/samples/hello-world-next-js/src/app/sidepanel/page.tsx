@@ -1,7 +1,10 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
-import { meet, MeetSidePanelClient } from '@googleworkspace/meet-addons/meet.addons';
+import {
+  meet,
+  MeetSidePanelClient,
+} from '@googleworkspace/meet-addons/meet.addons';
 import { CLOUD_PROJECT_NUMBER, MAIN_STAGE_URL } from '../../constants';
 
 /**
@@ -11,11 +14,11 @@ export default function Page() {
   const [sidePanelClient, setSidePanelClient] = useState<MeetSidePanelClient>();
 
   // Launches the main stage when the main button is clicked.
-  async function startCollaboration(e: unknown) {
+  async function startActivity(e: unknown) {
     if (!sidePanelClient) {
-      throw new Error("Side Panel is not yet initialized!");
+      throw new Error('Side Panel is not yet initialized!');
     }
-    await sidePanelClient.startCollaboration({ mainStageUrl: MAIN_STAGE_URL });
+    await sidePanelClient.startActivity({ mainStageUrl: MAIN_STAGE_URL });
   }
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function Page() {
   return (
     <>
       <div>This is the Add-on Side Panel. Only you can see this.</div>
-      <button onClick={startCollaboration}>Launch Activity in Main Stage.</button>
+      <button onClick={startActivity}>Launch Activity in Main Stage.</button>
     </>
-  )
+  );
 }
