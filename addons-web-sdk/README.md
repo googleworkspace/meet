@@ -19,7 +19,9 @@ npm install @googleworkspace/meet-addons
 ```
 
 For TypeScript users, TypeScript definitions are packaged with the module. There
-is no need to install any modules from DefinitelyTyped.
+is no need to install any modules from DefinitelyTyped. Also ensure that you use
+a ModuleResolution strategy in your `tsconfig.json` that [supports package.json 
+`exports`](https://www.typescriptlang.org/tsconfig/#moduleResolution).
 
 ### Creating an add-on session
 
