@@ -21,17 +21,16 @@ export default function Page() {
     await sidePanelClient.startActivity({ mainStageUrl: MAIN_STAGE_URL });
   }
 
+  /**
+   * Prepares the Add-on Side Panel Client.
+   */
   useEffect(() => {
-    /**
-     * Prepares the Add-on Side Panel Client.
-     */
-    async function setUpAddon() {
+    (async () => {
       const session = await meet.addon.createAddonSession({
         cloudProjectNumber: CLOUD_PROJECT_NUMBER,
       });
       setSidePanelClient(await session.createSidePanelClient());
-    }
-    setUpAddon();
+    })();
   }, []);
 
   return (

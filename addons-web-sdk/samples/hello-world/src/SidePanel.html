@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
+  <!-- See: https://developers.google.com/meet/add-ons/guides/overview#side-panel -->
+  <head>
+    <title>Meet Add-on Side Panel</title>
+    <script src="./main.js"></script>
+  </head>
 
-<!-- See: https://developers.google.com/meet/add-ons/guides/overview#side-panel -->
-<head>
-  <title>Meet Add-on Side Panel</title>
-  <script src="./main.js"></script>
-</head>
+  <body style="width: 100%; height: 100%; margin: 0">
+    <div>This is the Add-on Side Panel. Only you can see this.</div>
+    <button id="start-activity">Launch Activity in Main Stage.</button>
 
-<body style="width: 100%; height: 100%; margin: 0">
-  <div>This is the Add-on Side Panel. Only you can see this.</div>
-  <button id="start-activity">Launch Activity in Main Stage.</button>
-
-  <script>
-    document.body.onload = () => {
-      // Library name (`helloWorld`) is defined in the webpack config.
-      // The function (`setUpAddon`) is defined in index.js.
-      helloWorld.setUpAddon();
-    };
-  </script>
-</body>
-
+    <script>
+      document.body.onload = () => {
+        // Library name (`helloWorld`) is defined in the webpack config.
+        // The function (`setUpAddon`) is defined in main.js.
+        helloWorld.setUpAddon();
+      };
+    </script>
+  </body>
 </html>
