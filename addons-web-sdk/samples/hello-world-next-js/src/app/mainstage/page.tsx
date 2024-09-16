@@ -8,18 +8,17 @@ import { CLOUD_PROJECT_NUMBER } from '../../constants';
  * See: https://developers.google.com/meet/add-ons/guides/overview#main-stage
  */
 export default function Page() {
+  /**
+   * Prepares the Add-on Main Stage Client, which signals that the add-on has
+   * successfully launched in the main stage.
+   */
   useEffect(() => {
-    /**
-     * Prepares the Add-on Main Stage Client, which signals that the add-on has
-     * successfully launched in the main stage.
-     */
-    async function initializeMainStage() {
+    (async () => {
       const session = await meet.addon.createAddonSession({
         cloudProjectNumber: CLOUD_PROJECT_NUMBER,
       });
       await session.createMainStageClient();
-    }
-    initializeMainStage();
+    })();
   }, []);
 
   return (

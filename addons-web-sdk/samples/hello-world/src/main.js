@@ -14,7 +14,6 @@
 
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
-// TODO: Make sure that you modify these constants, if you fork this!
 const CLOUD_PROJECT_NUMBER = '989911054302';
 const MAIN_STAGE_URL =
   'https://googleworkspace.github.io/meet/hello-world/MainStage.html';
