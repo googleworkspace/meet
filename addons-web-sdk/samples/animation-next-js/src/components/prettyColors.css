@@ -23,6 +23,18 @@ body {
   width: 5%;
 }
 
+@media (prefers-reduced-motion) {
+  .prettyLine {
+    animation-iteration-count: 0 !important;
+  }
+}
+
+@media (prefers-contrast) {
+  .prettyLine {
+    border: 2px solid black;
+  }
+}
+
 .prettyLine:hover {
   animation-direction: reverse;
 }
