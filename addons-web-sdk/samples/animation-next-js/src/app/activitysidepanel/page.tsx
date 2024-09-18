@@ -48,6 +48,7 @@ export default function Page() {
         Change the color. Only you will see this:
       </label>
       <input
+        aria-label="Color picker for animation in main stage"
         type="color"
         id="pretty-color"
         name="pretty-color"

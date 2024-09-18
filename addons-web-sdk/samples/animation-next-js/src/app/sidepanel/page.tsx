@@ -63,13 +63,19 @@ export default function Page() {
         Pick a color you like. Everyone will see this:
       </label>
       <input
+        aria-label="Color picker for animation in main stage"
         type="color"
         id="starting-color"
         name="starting-color"
         defaultValue="#00ff00"
       />
       <br />
-      <button onClick={startCollaboration}>Start the animation!</button>
+      <button
+        aria-label="Launch activity for all participants"
+        onClick={startCollaboration}
+      >
+        Start activity
+      </button>
     </>
   );
 }
