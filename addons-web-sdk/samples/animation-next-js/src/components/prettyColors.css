@@ -20,7 +20,7 @@ body {
   animation-timing-function: linear;
   height: 10px;
   position: absolute;
-  width: 40%;
+  width: 5%;
 }
 
 .prettyLine:hover {

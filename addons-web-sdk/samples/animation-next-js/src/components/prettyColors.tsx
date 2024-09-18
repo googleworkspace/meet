@@ -3,7 +3,7 @@
  * It just gives us something fun to look at while testing the add-on code :)
  */
 
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import './prettyColors.css';
 
 type Props = {
@@ -109,7 +109,7 @@ function createLine(
 ): ReactElement {
   const randomColor = `hsl(${hue}, ${saturation * 100}%, ${luminosity * 100}%)`;
   const top = lineNumber % 100;
-  const left = (lineNumber % 110) - 20;
+  const left = (lineNumber % 110) - 2;
   const randomStyle = {
     backgroundColor: randomColor,
     color: randomColor,
@@ -131,13 +131,29 @@ function createLine(
  * effect.
  */
 export default function PrettyColors({ baseColor }: Props) {
+  const [isAnimationShowing, setIsAnimationShowing] = useState(false);
+
   const hslColor = hexToHsl(baseColor);
   // Draw 1000 lines (10^3).
   const coloredLines = createLines(hslColor, 10);
 
+  const description = isAnimationShowing ? null : (
+    <div>
+      Clicking the button shows spinning bars of the following color:
+      <div style={{ backgroundColor: baseColor }}>{baseColor}</div>
+    </div>
+  );
+  const animation = isAnimationShowing ? (
+    <div className="prettyColorsContainer">{coloredLines}</div>
+  ) : null;
+
   return (
     <>
-      <div className="prettyColorsContainer">{coloredLines}</div>
+      {description}
+      <button onClick={(e) => setIsAnimationShowing(!isAnimationShowing)}>
+        {isAnimationShowing ? 'Hide' : 'Display'} animation
+      </button>
+      {animation}
     </>
   );
 }
