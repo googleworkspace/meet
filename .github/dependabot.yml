@@ -3,15 +3,18 @@ updates:
   - package-ecosystem: 'npm'
     directories:
       - '/addons-web-sdk/samples'
+    # Check for version updates every day.
     schedule:
       interval: 'daily'
-    # Ignore patches for everything except for @googleworkspace/meet-addons
+    # Group all changes across all samples into one PR.
+    groups:
+      versioning:
+        applies-to: version-updates
+      security:
+        applies-to: security-updates
+    # Ignore patches for enumerated dev dependencies.
     ignore:
       - dependency-name: '@types*'
-        update-types: ['version-update:semver-patch']
-      - dependency-name: 'next'
-        update-types: ['version-update:semver-patch']
-      - dependency-name: 'react*'
         update-types: ['version-update:semver-patch']
       - dependency-name: 'typescript'
         update-types: ['version-update:semver-patch']
