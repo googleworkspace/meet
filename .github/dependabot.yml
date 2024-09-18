@@ -10,8 +10,12 @@ updates:
     groups:
       versioning:
         applies-to: version-updates
+        patterns:
+          - '*'
       security:
         applies-to: security-updates
+        patterns:
+          - '*'
     # Ignore patches for enumerated dev dependencies.
     ignore:
       - dependency-name: '@types*'
