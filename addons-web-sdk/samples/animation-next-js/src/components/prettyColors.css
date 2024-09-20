@@ -12,15 +12,30 @@ body {
   width: 100%;
 }
 
-.prettyLine {
+.animatedLine {
   animation-name: spin;
   animation-direction: normal;
   animation-duration: 10000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+}
+
+.prettyLine {
   height: 10px;
   position: absolute;
-  width: 40%;
+  width: 5%;
+}
+
+@media (prefers-reduced-motion) {
+  .prettyLine {
+    animation-iteration-count: 0 !important;
+  }
+}
+
+@media (prefers-contrast) {
+  .prettyLine {
+    border: 2px solid black;
+  }
 }
 
 .prettyLine:hover {

@@ -3,7 +3,7 @@
  * It just gives us something fun to look at while testing the add-on code :)
  */
 
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import './prettyColors.css';
 
 type Props = {
@@ -69,7 +69,7 @@ function reverseAnimation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
  * Draw steps^3 divs that all are shades of the given hslColor and
  * all will spin.
  */
-function createLines(hslColor: number[], steps: number) {
+function createLines(hslColor: number[], steps: number, isAnimated) {
   const coloredLines = [];
   const minSaturation = hslColor[1] / 2;
   const maxSaturation = Math.max(1, hslColor[1] * 1.5);
@@ -89,7 +89,7 @@ function createLines(hslColor: number[], steps: number) {
         luminosity += (maxLuminosity - minLuminosity) / steps
       ) {
         coloredLines.push(
-          createLine(hslColor[0], saturation, luminosity, key++)
+          createLine(hslColor[0], saturation, luminosity, isAnimated, key++)
         );
       }
     }
@@ -105,21 +105,23 @@ function createLine(
   hue: number,
   saturation: number,
   luminosity: number,
+  isAnimated: boolean,
   lineNumber: number
 ): ReactElement {
   const randomColor = `hsl(${hue}, ${saturation * 100}%, ${luminosity * 100}%)`;
   const top = lineNumber % 100;
-  const left = (lineNumber % 110) - 20;
+  const left = (lineNumber % 110) - 2;
   const randomStyle = {
     backgroundColor: randomColor,
     color: randomColor,
     top: `${top}%`,
     left: `${left}%`,
   };
+  const animatedClass = isAnimated ? ' animatedLine' : '';
   return (
     <div
       key={lineNumber}
-      className="prettyLine"
+      className={`prettyLine${animatedClass}`}
       style={randomStyle}
       onMouseOver={(e) => reverseAnimation(e)}
     ></div>
@@ -131,12 +133,20 @@ function createLine(
  * effect.
  */
 export default function PrettyColors({ baseColor }: Props) {
+  const [isAnimated, setIsAnimated] = useState(false);
+
   const hslColor = hexToHsl(baseColor);
   // Draw 1000 lines (10^3).
-  const coloredLines = createLines(hslColor, 10);
+  const coloredLines = createLines(hslColor, 10, isAnimated);
 
   return (
     <>
+      <button
+        aria-label="Toggle animation"
+        onClick={(e) => setIsAnimated(!isAnimated)}
+      >
+        {isAnimated ? 'Stop' : 'Start'} animation
+      </button>
       <div className="prettyColorsContainer">{coloredLines}</div>
     </>
   );
