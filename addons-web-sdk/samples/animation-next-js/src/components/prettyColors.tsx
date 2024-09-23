@@ -69,7 +69,7 @@ function reverseAnimation(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
  * Draw steps^3 divs that all are shades of the given hslColor and
  * all will spin.
  */
-function createLines(hslColor: number[], steps: number, isAnimated) {
+function createLines(hslColor: number[], steps: number, isAnimated: boolean) {
   const coloredLines = [];
   const minSaturation = hslColor[1] / 2;
   const maxSaturation = Math.max(1, hslColor[1] * 1.5);
