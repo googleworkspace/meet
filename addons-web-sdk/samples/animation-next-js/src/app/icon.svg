@@ -1,0 +1,46 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2_2)">
+<rect x="268" y="27" width="256" height="22" transform="rotate(-30 268 27)" fill="#0D720C"/>
+<rect x="268" y="466" width="256" height="22" transform="rotate(-30 268 466)" fill="#6DD76D"/>
+<rect x="268" y="245" width="256" height="22" transform="rotate(-30 268 245)" fill="#25AF20"/>
+<rect x="268" y="392" width="256" height="22" transform="rotate(-30 268 392)" fill="#54D352"/>
+<rect x="268" y="174" width="256" height="22" transform="rotate(-30 268 174)" fill="#1EA319"/>
+<rect x="268" y="537" width="256" height="22" transform="rotate(-30 268 537)" fill="#86DF85"/>
+<rect x="268" y="101" width="256" height="22" transform="rotate(-30 268 101)" fill="#198A19"/>
+<rect x="268" y="319" width="256" height="22" transform="rotate(-30 268 319)" fill="#37CE36"/>
+<rect x="35" y="265" width="256" height="22" transform="rotate(-30 35 265)" fill="#0D720C"/>
+<rect x="35" y="265" width="256" height="22" transform="rotate(-30 35 265)" stroke="black"/>
+<rect x="35" y="265" width="256" height="22" transform="rotate(-30 35 265)" fill="#0D720C"/>
+<rect x="35" y="483" width="256" height="22" transform="rotate(-30 35 483)" fill="#25AF20"/>
+<rect x="35" y="630" width="256" height="22" transform="rotate(-30 35 630)" fill="#54D352"/>
+<rect x="35" y="412" width="256" height="22" transform="rotate(-30 35 412)" fill="#1EA319"/>
+<rect x="35" y="339" width="256" height="22" transform="rotate(-30 35 339)" fill="#198A19"/>
+<rect x="35" y="557" width="256" height="22" transform="rotate(-30 35 557)" fill="#37CE36"/>
+<rect x="497" y="382" width="256" height="22" transform="rotate(-30 497 382)" fill="#0D720C"/>
+<rect x="497" y="382" width="256" height="22" transform="rotate(-30 497 382)" stroke="black"/>
+<rect x="497" y="382" width="256" height="22" transform="rotate(-30 497 382)" fill="#0D720C"/>
+<rect x="497" y="456" width="256" height="22" transform="rotate(-30 497 456)" fill="#198A19"/>
+<rect x="35" y="118" width="256" height="22" transform="rotate(-30 35 118)" fill="#BCEEBC"/>
+<rect x="35" y="47" width="256" height="22" transform="rotate(-30 35 47)" fill="#A3E59F"/>
+<path d="M35 192L256.702 64L267.702 83.0526L46 211.053L35 192Z" fill="#D6F6DA"/>
+<rect x="-198" y="140" width="256" height="22" transform="rotate(-30 -198 140)" fill="#0D720C"/>
+<rect x="-198" y="140" width="256" height="22" transform="rotate(-30 -198 140)" stroke="black"/>
+<rect x="-198" y="140" width="256" height="22" transform="rotate(-30 -198 140)" fill="#0D720C"/>
+<rect x="-198" y="358" width="256" height="22" transform="rotate(-30 -198 358)" fill="#BCEEBC"/>
+<rect x="-198" y="287" width="256" height="22" transform="rotate(-30 -198 287)" fill="#A3E59F"/>
+<rect x="-198" y="214" width="256" height="22" transform="rotate(-30 -198 214)" fill="#198A19"/>
+<rect x="-198" y="432" width="256" height="22" transform="rotate(-30 -198 432)" fill="#D6F6DA"/>
+<rect x="-198" y="505" width="256" height="22" transform="rotate(-30 -198 505)" fill="#0D720C"/>
+<rect x="-198" y="579" width="256" height="22" transform="rotate(-30 -198 579)" fill="#198A19"/>
+<rect x="497" y="238" width="256" height="22" transform="rotate(-30 497 238)" fill="#6DD76D"/>
+<rect x="497" y="17" width="256" height="22" transform="rotate(-30 497 17)" fill="#25AF20"/>
+<rect x="497" y="164" width="256" height="22" transform="rotate(-30 497 164)" fill="#54D352"/>
+<rect x="497" y="309" width="256" height="22" transform="rotate(-30 497 309)" fill="#86DF85"/>
+<rect x="497" y="91" width="256" height="22" transform="rotate(-30 497 91)" fill="#37CE36"/>
+</g>
+<defs>
+<clipPath id="clip0_2_2">
+<rect width="512" height="512" fill="white"/>
+</clipPath>
+</defs>
+</svg>
