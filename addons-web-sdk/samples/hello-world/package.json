@@ -9,7 +9,7 @@
     "build": "mkdir -p ../dist/hello-world && cp src/*.html ../dist/hello-world/ && npx webpack"
   },
   "dependencies": {
-    "@googleworkspace/meet-addons": "^1.0.0"
+    "@googleworkspace/meet-addons": "^1.1.0"
   },
   "devDependencies": {
     "webpack": "^5.95.0",
