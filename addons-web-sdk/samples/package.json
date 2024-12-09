@@ -11,6 +11,7 @@
   "workspaces": [
     "animation-next-js",
     "hello-world",
-    "hello-world-next-js"
+    "hello-world-next-js",
+    "hello-world-react-ts-vite"
   ]
 }
