@@ -1,0 +1,26 @@
+{
+  "name": "hello-world-react-ts-vite",
+  "description": "This add-on is built using React and TypeScript in order to show how a React app can be modified to work as an add-on.",
+  "keywords": [
+    "Google Meet"
+  ],
+  "author": "teddyward",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "vite",
+    "build": "npm install && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@googleworkspace/meet-addons": "^1.1.1",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5",
+    "vite": "^6"
+  }
+}
