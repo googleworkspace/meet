@@ -9,15 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@googleworkspace/meet-addons": "^1.1.1",
-    "next": "15.0.2",
-    "react": "^18",
-    "react-dom": "^18"
+    "@googleworkspace/meet-addons": "^1.2.0",
+    "next": "15.1.4",
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
     "@types/node": "^22",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "typescript": "^5"
   }
 }
