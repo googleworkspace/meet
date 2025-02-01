@@ -1,15 +1,17 @@
 'use client';
 
 import {
-    meet,
-    MeetMainStageClient,
+  meet,
+  MeetMainStageClient,
 } from '@googleworkspace/meet-addons/meet.addons';
 import { useEffect, useState } from 'react';
 import { CLOUD_PROJECT_NUMBER } from '../../constants';
 
-type MeetingSummary = {
-  bullet_points: string[];
-  action_items: string[];
+type ApiResponse = {
+  data: {
+    bullet_points: string[];
+    action_items: string[];
+  };
 };
 
 /**
@@ -18,7 +20,7 @@ type MeetingSummary = {
 export default function Page() {
   const [mainStageClient, setMainStageClient] = useState<MeetMainStageClient>();
   const [currentTime, setCurrentTime] = useState<string>('');
-  const [summary, setSummary] = useState<MeetingSummary | null>(null);
+  const [summary, setSummary] = useState<ApiResponse['data'] | null>(null);
   const [error, setError] = useState<string>('');
 
   // 現在時刻を更新する関数
@@ -34,8 +36,8 @@ export default function Page() {
       if (!response.ok) {
         throw new Error('APIの呼び出しに失敗しました');
       }
-      const data = await response.json();
-      setSummary(data);
+      const data: ApiResponse = await response.json();
+      setSummary(data.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : '予期せぬエラーが発生しました');
     }
