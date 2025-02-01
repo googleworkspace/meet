@@ -1,11 +1,16 @@
 'use client';
 
 import {
-  meet,
-  MeetMainStageClient,
+    meet,
+    MeetMainStageClient,
 } from '@googleworkspace/meet-addons/meet.addons';
 import { useEffect, useState } from 'react';
 import { CLOUD_PROJECT_NUMBER } from '../../constants';
+
+type MeetingSummary = {
+  bullet_points: string[];
+  action_items: string[];
+};
 
 /**
  * See: https://developers.google.com/meet/add-ons/guides/overview#main-stage
@@ -13,6 +18,8 @@ import { CLOUD_PROJECT_NUMBER } from '../../constants';
 export default function Page() {
   const [mainStageClient, setMainStageClient] = useState<MeetMainStageClient>();
   const [currentTime, setCurrentTime] = useState<string>('');
+  const [summary, setSummary] = useState<MeetingSummary | null>(null);
+  const [error, setError] = useState<string>('');
 
   // 現在時刻を更新する関数
   const updateTime = () => {
@@ -20,11 +27,30 @@ export default function Page() {
     setCurrentTime(now.toLocaleTimeString('ja-JP'));
   };
 
+  // APIからデータを取得
+  const fetchSummary = async () => {
+    try {
+      const response = await fetch('https://zenn-hackathon-2025-backend-666593730950.asia-northeast1.run.app/summarize_meeting');
+      if (!response.ok) {
+        throw new Error('APIの呼び出しに失敗しました');
+      }
+      const data = await response.json();
+      setSummary(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '予期せぬエラーが発生しました');
+    }
+  };
+
   // 1秒ごとに時刻を更新
   useEffect(() => {
     updateTime();
     const timer = setInterval(updateTime, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  // 初回マウント時にAPIからデータを取得
+  useEffect(() => {
+    fetchSummary();
   }, []);
 
   /**
@@ -42,8 +68,37 @@ export default function Page() {
 
   return (
     <div className="p-8 text-center">
-      <h1 className="text-3xl font-bold mb-6">Meet アドオン - 時計</h1>
+      <h1 className="text-3xl font-bold mb-6">Meet アドオン - 会議サマリー</h1>
       <div className="text-6xl font-mono mb-8">{currentTime}</div>
+
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          {error}
+        </div>
+      )}
+
+      {summary && (
+        <div className="mb-6 text-left max-w-2xl mx-auto">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold mb-3">会議の要点</h2>
+            <ul className="list-disc pl-5 space-y-2">
+              {summary.bullet_points.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mb-4">
+            <h2 className="text-2xl font-bold mb-3">アクションアイテム</h2>
+            <ul className="list-disc pl-5 space-y-2">
+              {summary.action_items.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
       <p className="text-gray-600">このページは全ての参加者に表示されています</p>
     </div>
   );
