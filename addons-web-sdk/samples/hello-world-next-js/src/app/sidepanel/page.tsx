@@ -22,6 +22,7 @@ export default function Page() {
   const [currentTime, setCurrentTime] = useState<string>('');
   const [summary, setSummary] = useState<ApiResponse['data'] | null>(null);
   const [error, setError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(true);
 
   // 現在時刻を更新する関数
   const updateTime = () => {
@@ -31,6 +32,7 @@ export default function Page() {
 
   // APIからデータを取得
   const fetchSummary = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch('https://zenn-hackathon-2025-backend-666593730950.asia-northeast1.run.app/summarize_meeting');
       if (!response.ok) {
@@ -40,6 +42,8 @@ export default function Page() {
       setSummary(data.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : '予期せぬエラーが発生しました');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -86,7 +90,15 @@ export default function Page() {
         </div>
       )}
 
-      {summary && (
+      {isLoading ? (
+        <div className="mb-6">
+          <div className="animate-pulse flex flex-col items-center space-y-4">
+            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div className="text-gray-600">AIが前回のミーティングの要約を作成中です...</div>
+            <div className="h-2 bg-gray-200 rounded w-1/2"></div>
+          </div>
+        </div>
+      ) : summary && (
         <div className="mb-6">
           <div className="mb-4">
             <h2 className="text-xl font-bold mb-2">会議の要点</h2>
