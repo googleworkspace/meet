@@ -23,6 +23,7 @@ export default function Page() {
   const [summary, setSummary] = useState<ApiResponse['data'] | null>(null);
   const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
+  const [meetingCode, setMeetingCode] = useState<string>('');
 
   // 現在時刻を更新する関数
   const updateTime = () => {
@@ -75,7 +76,12 @@ export default function Page() {
       const session = await meet.addon.createAddonSession({
         cloudProjectNumber: CLOUD_PROJECT_NUMBER,
       });
-      setSidePanelClient(await session.createSidePanelClient());
+      const client = await session.createSidePanelClient();
+      setSidePanelClient(client);
+
+      // Get meeting info
+      const meetingInfo = await client.getMeetingInfo();
+      setMeetingCode(meetingInfo.meetingCode);
     })();
   }, []);
 
@@ -83,6 +89,11 @@ export default function Page() {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">現在時刻</h1>
       <div className="text-4xl font-mono mb-6">{currentTime}</div>
+
+      <div className="mb-4">
+        <h2 className="text-xl font-bold mb-2">会議コード</h2>
+        <div className="text-lg font-mono">{meetingCode}</div>
+      </div>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
