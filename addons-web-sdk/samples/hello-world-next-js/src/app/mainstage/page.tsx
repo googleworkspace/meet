@@ -1,6 +1,23 @@
 'use client';
 
 import {
+  Alert,
+  AlertIcon,
+  Box,
+  Container,
+  Divider,
+  Flex,
+  Heading,
+  Icon,
+  List,
+  ListItem,
+  Skeleton,
+  SkeletonText,
+  Text,
+  useColorModeValue,
+  VStack,
+} from '@chakra-ui/react';
+import {
   meet,
   MeetMainStageClient,
 } from '@googleworkspace/meet-addons/meet.addons';
@@ -72,48 +89,78 @@ export default function Page() {
     })();
   }, []);
 
+  const bgColor = useColorModeValue('gray.50', 'gray.700');
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
+
   return (
-    <div className="p-8 text-center">
-      <h1 className="text-3xl font-bold mb-6">Meet アドオン - 会議サマリー</h1>
-      <div className="text-6xl font-mono mb-8">{currentTime}</div>
+    <Container maxW="container.lg" py={8}>
+      <VStack spacing={8} align="center">
+        <Box textAlign="center">
+          <Heading as="h1" size="xl" mb={4}>
+            Meet アドオン - 会議サマリー
+          </Heading>
+          <Text fontSize="6xl" fontFamily="mono" color="blue.500" fontWeight="bold">
+            {currentTime}
+          </Text>
+        </Box>
 
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-          {error}
-        </div>
-      )}
+        {error && (
+          <Alert status="error" borderRadius="lg" width="full">
+            <AlertIcon />
+            {error}
+          </Alert>
+        )}
 
-      {isLoading ? (
-        <div className="mb-6 flex flex-col items-center">
-          <div className="animate-pulse flex flex-col items-center space-y-4 max-w-2xl">
-            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-            <div className="text-gray-600">AIが前回のミーティングの要約を作成中です...</div>
-            <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-          </div>
-        </div>
-      ) : summary && (
-        <div className="mb-6 text-left max-w-2xl mx-auto">
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold mb-3">会議の要点</h2>
-            <ul className="list-disc pl-5 space-y-2">
-              {summary.bullet_points.map((point, index) => (
-                <li key={index}>{point}</li>
-              ))}
-            </ul>
-          </div>
+        {isLoading ? (
+          <Box p={6} bg={bgColor} borderRadius="xl" borderWidth="1px" borderColor={borderColor} width="full">
+            <VStack spacing={6} align="stretch">
+              <Skeleton height="40px" />
+              <SkeletonText noOfLines={6} spacing={4} />
+              <Text color="gray.500" textAlign="center" fontSize="lg">
+                AIが前回のミーティングの要約を作成中です...
+              </Text>
+            </VStack>
+          </Box>
+        ) : summary && (
+          <Flex direction="column" gap={6} width="full">
+            <Box p={6} bg={bgColor} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
+              <Heading size="lg" mb={4} display="flex" alignItems="center">
+                <Icon as={() => <span>💡</span>} mr={2} />
+                会議の要点
+              </Heading>
+              <List spacing={3}>
+                {summary.bullet_points.map((point, index) => (
+                  <ListItem key={index} display="flex" alignItems="start">
+                    <Text as="span" mr={3} color="blue.500">•</Text>
+                    <Text>{point}</Text>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
 
-          <div className="mb-4">
-            <h2 className="text-2xl font-bold mb-3">アクションアイテム</h2>
-            <ul className="list-disc pl-5 space-y-2">
-              {summary.action_items.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+            <Box p={6} bg={bgColor} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
+              <Heading size="lg" mb={4} display="flex" alignItems="center">
+                <Icon as={() => <span>✅</span>} mr={2} />
+                アクションアイテム
+              </Heading>
+              <List spacing={3}>
+                {summary.action_items.map((item, index) => (
+                  <ListItem key={index} display="flex" alignItems="start">
+                    <Text as="span" mr={3} color="green.500">•</Text>
+                    <Text>{item}</Text>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Flex>
+        )}
 
-      <p className="text-gray-600">このページは全ての参加者に表示されています</p>
-    </div>
+        <Divider />
+        
+        <Text color="gray.500" fontSize="md">
+          このページは全ての参加者に表示されています
+        </Text>
+      </VStack>
+    </Container>
   );
 }

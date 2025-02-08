@@ -1,6 +1,23 @@
 'use client';
 
 import {
+  Alert,
+  AlertIcon,
+  Badge,
+  Box,
+  Button,
+  Container,
+  Divider,
+  Heading,
+  List,
+  ListItem,
+  Skeleton,
+  SkeletonText,
+  Text,
+  useColorModeValue,
+  VStack,
+} from '@chakra-ui/react';
+import {
   meet,
   MeetSidePanelClient,
 } from '@googleworkspace/meet-addons/meet.addons';
@@ -24,6 +41,9 @@ export default function Page() {
   const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
   const [meetingCode, setMeetingCode] = useState<string>('');
+
+  const bgColor = useColorModeValue('gray.50', 'gray.700');
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
 
   // 現在時刻を更新する関数
   const updateTime = () => {
@@ -86,58 +106,84 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">現在時刻</h1>
-      <div className="text-4xl font-mono mb-6">{currentTime}</div>
+    <Container maxW="container.sm" py={4}>
+      <VStack spacing={6} align="stretch">
+        <Box>
+          <Heading size="md" mb={2}>現在時刻</Heading>
+          <Text fontSize="3xl" fontFamily="mono" color="blue.500">
+            {currentTime}
+          </Text>
+        </Box>
 
-      <div className="mb-4">
-        <h2 className="text-xl font-bold mb-2">会議コード</h2>
-        <div className="text-lg font-mono">{meetingCode}</div>
-      </div>
+        <Box>
+          <Heading size="md" mb={2}>会議コード</Heading>
+          <Badge fontSize="md" p={2} borderRadius="md">
+            {meetingCode}
+          </Badge>
+        </Box>
 
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-          {error}
-        </div>
-      )}
+        {error && (
+          <Alert status="error" borderRadius="md">
+            <AlertIcon />
+            {error}
+          </Alert>
+        )}
 
-      {isLoading ? (
-        <div className="mb-6">
-          <div className="animate-pulse flex flex-col items-center space-y-4">
-            <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-            <div className="text-gray-600">AIが前回のミーティングの要約を作成中です...</div>
-            <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-          </div>
-        </div>
-      ) : summary && (
-        <div className="mb-6">
-          <div className="mb-4">
-            <h2 className="text-xl font-bold mb-2">会議の要点</h2>
-            <ul className="list-disc pl-5">
-              {summary.bullet_points.map((point, index) => (
-                <li key={index} className="mb-1">{point}</li>
-              ))}
-            </ul>
-          </div>
+        {isLoading ? (
+          <Box p={4} bg={bgColor} borderRadius="lg" borderWidth="1px" borderColor={borderColor}>
+            <VStack spacing={4} align="stretch">
+              <Skeleton height="20px" width="200px" />
+              <SkeletonText noOfLines={4} spacing={4} />
+              <Text color="gray.500" textAlign="center">
+                AIが前回のミーティングの要約を作成中です...
+              </Text>
+            </VStack>
+          </Box>
+        ) : summary && (
+          <VStack spacing={4} align="stretch">
+            <Box p={4} bg={bgColor} borderRadius="lg" borderWidth="1px" borderColor={borderColor}>
+              <Heading size="md" mb={3}>会議の要点</Heading>
+              <List spacing={2}>
+                {summary.bullet_points.map((point, index) => (
+                  <ListItem key={index} display="flex" alignItems="start">
+                    <Text as="span" mr={2}>•</Text>
+                    <Text>{point}</Text>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
 
-          <div className="mb-4">
-            <h2 className="text-xl font-bold mb-2">アクションアイテム</h2>
-            <ul className="list-disc pl-5">
-              {summary.action_items.map((item, index) => (
-                <li key={index} className="mb-1">{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+            <Box p={4} bg={bgColor} borderRadius="lg" borderWidth="1px" borderColor={borderColor}>
+              <Heading size="md" mb={3}>アクションアイテム</Heading>
+              <List spacing={2}>
+                {summary.action_items.map((item, index) => (
+                  <ListItem key={index} display="flex" alignItems="start">
+                    <Text as="span" mr={2}>•</Text>
+                    <Text>{item}</Text>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </VStack>
+        )}
 
-      <div className="mb-4">このサイドパネルはあなたにのみ表示されています。</div>
-      <button 
-        onClick={startActivity}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        メインステージで表示
-      </button>
-    </div>
+        <Divider />
+
+        <VStack spacing={4}>
+          <Text color="gray.500" fontSize="sm">
+            このサイドパネルはあなたにのみ表示されています。
+          </Text>
+          <Button
+            colorScheme="blue"
+            size="lg"
+            width="full"
+            onClick={startActivity}
+            leftIcon={<span>📺</span>}
+          >
+            メインステージで表示
+          </Button>
+        </VStack>
+      </VStack>
+    </Container>
   );
 }

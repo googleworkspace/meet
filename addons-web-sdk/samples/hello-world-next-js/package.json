@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.10.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@googleworkspace/meet-addons": "^1.2.0",
+    "framer-motion": "^12.4.1",
     "next": "15.1.6",
     "react": "^19",
     "react-dom": "^19"
