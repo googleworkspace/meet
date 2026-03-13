@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@googleworkspace/meet-addons": "^1.2.0",
-    "next": "15.2.4",
+    "next": "16.1.6",
     "react": "^19",
     "react-dom": "^19"
   },
   "devDependencies": {
-    "@types/node": "^22",
+    "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "typescript": "^5"
